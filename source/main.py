@@ -15,6 +15,7 @@ class Glyde(ShowBase):
         self.shape = Cube(l, w, h)
         self.shapeNode = base.render.attachNewNode("shape")
         self.shape.reparentTo(self.shapeNode)
+        self.shapeNode.setPos(0, 10, 0)
 
     def create_movement(self):
         movement = createMovement(taskMgr)
