@@ -1,0 +1,17 @@
+To Do List
+
+camera controls
+movement controls
+setting xml file
+add light and shadows
+world and player file
+floating island geometry creation
+plaer geometry creation
+tree generation
+building generation
+collectible conception
+collectible geometry generation
+npc generation
+skybox
+collisions
+world generation and updating
