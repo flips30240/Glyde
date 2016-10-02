@@ -7,5 +7,5 @@ class player():
 
     def create_dev_player(self, l, w, h):
         self.devPLayerGeom = Cube(l, w, h)
-        self.devPlayerNode = base.render.attachNewNode("dev player")
+        self.devPlayerNode = base.render.attachNewNode("player")
         self.devPLayerGeom.reparentTo(self.devPlayerNode)

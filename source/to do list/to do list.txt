@@ -1,6 +1,6 @@
 To Do List
 
-camera controls
+DONE - camera controls
 movement controls
 setting xml file
 add light and shadows

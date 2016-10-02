@@ -5,14 +5,15 @@ from createMovement import *
 from filters import *
 from world import *
 from player import *
+from cameraSetup import *
 
 class Glyde(ShowBase):
 
     def __init__(self):
         ShowBase.__init__(self)
-
         self.create_world_placeholder(100, 100, 1)
         self.create_player_placeholder(1, 1, 1)
+        self.setup_camera()
         self.add_filters()
         self.create_movement()
 
@@ -21,6 +22,9 @@ class Glyde(ShowBase):
 
     def create_player_placeholder(self, l, w, h):
         self.tempPlayer = player()
+
+    def setup_camera(self):
+        self.finishedCamera = cameraSetup(base.render.find("player"))
 
     def add_filters(self):
         self.filters = filters()

@@ -7,5 +7,5 @@ class world():
 
     def create_dev_world(self, l, w, h):
         self.devWorldGeom = Cube(l, w, h)
-        self.devWorldNode = base.render.attachNewNode("dev world")
+        self.devWorldNode = base.render.attachNewNode("world")
         self.devWorldGeom.reparentTo(self.devWorldNode)
