@@ -1,0 +1,10 @@
+forward
+w
+left
+a
+backward
+s
+right
+d
+jump
+space

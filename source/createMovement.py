@@ -1,4 +1,5 @@
 from direct.task.Task import Task as Task
+import math
 
 class createMovement():
 
@@ -9,6 +10,8 @@ class createMovement():
         self.taskManager.add(globalUpdate, "global update")
 
     def start_global_update(self, task):
+
+        #CAMERA
         pointer = base.win.getPointer(0)
         pointerX = pointer.getX()
         pointerY = pointer.getY()
@@ -28,5 +31,8 @@ class createMovement():
 
         base.render.find("player").setP(base.render.find("camera p node").getP())
         base.render.find("player").setH(base.render.find("camera h node").getH())
-        #base.cam.setR(0)
+        #END CAMERA
+
+
+        base.render.find("player").setPos(base.render.find("player").getPos() + base.render.find('movement check').getPos())
         return task.cont
