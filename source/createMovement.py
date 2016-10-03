@@ -33,6 +33,5 @@ class createMovement():
         base.render.find("player").setH(base.render.find("camera h node").getH())
         #END CAMERA
 
-
         base.render.find("player").setPos(base.render.find("player").getPos() + base.render.find('movement check').getPos())
         return task.cont

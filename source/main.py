@@ -28,7 +28,7 @@ class Glyde(ShowBase):
 
     def create_player_placeholder(self, l, w, h):
         self.tempPlayer = player()
-x_m = base.render.find("movement check").getX()
+        
     def setup_camera(self):
         self.finishedCamera = cameraSetup(base.render.find("player"))
 
