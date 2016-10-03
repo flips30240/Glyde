@@ -33,5 +33,16 @@ class createMovement():
         base.render.find("player").setH(base.render.find("camera h node").getH())
         #END CAMERA
 
-        base.render.find("player").setPos(base.render.find("player").getPos() + base.render.find('movement check').getPos())
+        if base.render.find("movement check").getY() == 1:
+            base.render.find("player").setY(base.render.find("player").find("move y node pos").getY(base.render))
+            base.render.find("player").setX(base.render.find("player").find("move y node pos").getX(base.render))
+        if base.render.find("movement check").getY() == -1:
+            base.render.find("player").setY(base.render.find("player").find("move y node neg").getY(base.render))
+            base.render.find("player").setX(base.render.find("player").find("move y node neg").getX(base.render))
+        if base.render.find("movement check").getX() == 1:
+            base.render.find("player").setY(base.render.find("player").find("move x node pos").getY(base.render))
+            base.render.find("player").setX(base.render.find("player").find("move x node pos").getX(base.render))
+        if base.render.find("movement check").getX() == -1:
+            base.render.find("player").setY(base.render.find("player").find("move x node neg").getY(base.render))
+            base.render.find("player").setX(base.render.find("player").find("move x node neg").getX(base.render))
         return task.cont
