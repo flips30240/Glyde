@@ -1,3 +1,5 @@
+import sys
+
 class handleControls():
 
     def __init__(self):
@@ -27,6 +29,8 @@ class handleControls():
                 self.backward = self.lines[x+1].strip()
             if self.lines[x].strip() == "jump":
                 self.jump = self.lines[x+1].strip()
+            if self.lines[x].strip() == "pause":
+                self.pause = self.lines[x+1].strip()
 
         print(self.forward, self.backward, self.left, self.right, self.jump)
 
@@ -48,6 +52,8 @@ class handleControls():
 
         base.accept(self.jump, self.move, extraArgs=[self.jump])
         base.accept(self.jump+"-up", self.stop, extraArgs=[self.jump])
+
+        base.accept(self.pause, self.pause_menu)
 
     def move(self, direction):
         if direction == "w":
@@ -76,3 +82,8 @@ class handleControls():
             self.movementCheckNode.setZ(0)
 
         print(self.movementCheckNode.getPos())
+
+    def pause_menu(self):
+        print("Leaving Game!")
+        #will eventually call up a menu class#
+        sys.exit()

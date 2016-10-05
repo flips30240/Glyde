@@ -33,6 +33,10 @@ class createMovement():
         base.render.find("player").setH(base.render.find("camera h node").getH())
         #END CAMERA
 
+        #WORLD LIGHT MOVEMENT
+        #base.render.find("world spotlight").setPos(base.render.find("player").getPos() + (1000, 0, 1000))
+
+        #CONTROLS
         if base.render.find("movement check").getY() == 1:
             base.render.find("player").setY(base.render.find("player").find("move y node pos").getY(base.render))
             base.render.find("player").setX(base.render.find("player").find("move y node pos").getX(base.render))
@@ -45,4 +49,5 @@ class createMovement():
         if base.render.find("movement check").getX() == -1:
             base.render.find("player").setY(base.render.find("player").find("move x node neg").getY(base.render))
             base.render.find("player").setX(base.render.find("player").find("move x node neg").getX(base.render))
+        #END CONTROLS
         return task.cont

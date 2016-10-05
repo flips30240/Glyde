@@ -8,3 +8,5 @@ right
 d
 jump
 space
+pause
+escape

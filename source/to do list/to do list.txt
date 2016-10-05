@@ -1,8 +1,8 @@
 To Do List
 
 DONE - camera controls
-movement controls
-setting xml file
+DONE - movement controls
+DONE - settings file
 add light and shadows
 world and player file
 floating island geometry creation

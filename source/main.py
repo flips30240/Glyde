@@ -7,6 +7,7 @@ from world import *
 from player import *
 from cameraSetup import *
 from handleControls import *
+from createLight import *
 
 class Glyde(ShowBase):
 
@@ -17,6 +18,7 @@ class Glyde(ShowBase):
         self.create_player_placeholder(1, 1, 1)
         self.setup_camera()
         self.add_filters()
+        self.add_light()
         self.create_movement()
 
     def make_controls(self):
@@ -24,16 +26,19 @@ class Glyde(ShowBase):
         print(self.controls.forward)
 
     def create_world_placeholder(self, l, w, h):
-        self.tempWorld = world()
+        self.World = world()
 
     def create_player_placeholder(self, l, w, h):
-        self.tempPlayer = player()
+        self.Player = player()
         
     def setup_camera(self):
         self.finishedCamera = cameraSetup(base.render.find("player"))
 
     def add_filters(self):
         self.filters = filters()
+
+    def add_light(self):
+        self.light = createLight("world", base.render.find('player'))
 
     def create_movement(self):
         self.movement = createMovement(taskMgr)
