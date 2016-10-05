@@ -34,7 +34,7 @@ class createMovement():
         #END CAMERA
 
         #WORLD LIGHT MOVEMENT
-        #base.render.find("world spotlight").setPos(base.render.find("player").getPos() + (1000, 0, 1000))
+        base.render.find("world spotlight").setPos(base.render.find("player").getPos() + (50, 0, 50))
 
         #CONTROLS
         if base.render.find("movement check").getY() == 1:
