@@ -3,9 +3,9 @@ To Do List
 DONE - camera controls
 DONE - movement controls
 DONE - settings file
-add light and shadows
-world and player file
+DONE - add light and shadows
 floating island geometry creation
+world and player file
 plaer geometry creation
 tree generation
 building generation
