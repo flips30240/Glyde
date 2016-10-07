@@ -1,4 +1,4 @@
-from shapes.shapeGenerator import Cube, Sphere
+from shapes.shapeGenerator import Cube, Sphere, Pyramid
 import random
 import math
 
@@ -10,8 +10,12 @@ class world():
 
     def create_dev_world(self, l, w, h):
         self.devWorldGeom = Cube(l, w, h)
+        self.testPyramid = Pyramid(30, 12)
+        self.testPyramid.setPos(100, 10, 10)
+        self.testPyramid.setR(180)
         self.devWorldNode = base.render.attachNewNode("world")
         self.devWorldGeom.reparentTo(self.devWorldNode)
+        self.testPyramid.reparentTo(self.devWorldNode)
 
     def create_test_island(self):
         def determine_location():
