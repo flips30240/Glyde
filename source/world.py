@@ -21,7 +21,7 @@ class world():
             self.bounds = random.randint(min, max)
         def determine_dimensions():
             self.width = self.bounds
-            self.length = (self.width/random.randint(1, 6))
+            self.length = (self.width/random.randint(1, 3))
             self.length = int(((math.ceil(self.length/2))*2) + 1)
             if self.width >= self.length:
                 self.height = self.length
@@ -33,24 +33,14 @@ class world():
             self.topGeom.setPos(0, 0, 0)
             self.topGeom.reparentTo(self.testIslandNode)
         def create_bottom():
-            self.posList = []
             for z in range(self.height):
-                for x in range(self.width):
-                    for y in range(self.length):
-                        if x == self.width - z:
-                            self.posList.append([x, y, z])
-                        if y == self.length - z:
-                            self.posList.append([x, y, z])
-
-            for x in range(len(self.posList)):
-                testCube = Cube(1, 1, 1)
-                testCube.setPos(self.posList[x][0], self.posList[x][1], self.posList[x][2])
+                testCube = Cube(self.width - z, self.length - z, 1)
+                testCube.setPos(z/2, z/2, -z/2)
                 testCube.reparentTo(self.testIslandNode)
-                print(self.posList[x])
-            #self.testIslandNode.flattenStrong()
+            self.testIslandNode.flattenStrong()
 
         determine_location()
-        determine_bounds(10, 100)
+        determine_bounds(100, 1000)
         determine_dimensions()
         create_top()
         create_bottom()
