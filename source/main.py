@@ -14,18 +14,18 @@ class Glyde(ShowBase):
     def __init__(self):
         ShowBase.__init__(self)
         self.make_controls()
-        self.create_world_placeholder(100, 100, 1)
+        self.create_world()
         self.create_player_placeholder(1, 1, 1)
         self.setup_camera()
         self.add_filters()
-        self.add_light()
         self.create_movement()
+        self.add_light()
 
     def make_controls(self):
         self.controls = handleControls()
         print(self.controls.forward)
 
-    def create_world_placeholder(self, l, w, h):
+    def create_world(self):
         self.World = world()
 
     def create_player_placeholder(self, l, w, h):
@@ -37,11 +37,11 @@ class Glyde(ShowBase):
     def add_filters(self):
         self.filters = filters()
 
+    def create_movement(self):
+        self.movement = createMovement(taskMgr, self.World.worldSeed)
+
     def add_light(self):
         self.light = createLight("world", base.render.find('player'))
-
-    def create_movement(self):
-        self.movement = createMovement(taskMgr)
 
 
 game = Glyde()

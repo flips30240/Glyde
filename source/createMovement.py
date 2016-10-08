@@ -1,13 +1,15 @@
 from direct.task.Task import Task as Task
 import math
+from shapes.shapeGenerator import *
 
 class createMovement():
 
-    def __init__(self, taskmanager):
-        #self.shapeNode = base.render.find("shape")
+    def __init__(self, taskmanager, seed):
+        self.chunkNum = 0
+        self.worldSeed = seed
         self.taskManager = taskmanager
-        globalUpdate = Task(self.start_global_update)
-        self.taskManager.add(globalUpdate, "global update")
+        self.globalUpdate = Task(self.start_global_update)
+        self.taskManager.add(self.globalUpdate, "global update")
 
     def start_global_update(self, task):
 
@@ -29,12 +31,14 @@ class createMovement():
         base.render.find("camera p node").setP(base.render.find("camera p node"), Pitch)
         base.render.find("camera h node").setH(base.render.find("camera h node"), Heading)
 
-        base.render.find("player").setP(base.render.find("camera p node").getP())
+        #base.render.find("player").setP(base.render.find("camera p node").getP())
+        #will use later when if:in air
         base.render.find("player").setH(base.render.find("camera h node").getH())
         #END CAMERA
 
         #WORLD LIGHT MOVEMENT
         base.render.find("world light").setPos(base.render.find("player").getPos() + (50, 0, 50))
+        #END WORLD LIGHT MOVEMENT
 
         #CONTROLS
         if base.render.find("movement check").getY() == 1:
@@ -50,4 +54,22 @@ class createMovement():
             base.render.find("player").setY(base.render.find("player").find("move x node neg").getY(base.render))
             base.render.find("player").setX(base.render.find("player").find("move x node neg").getX(base.render))
         #END CONTROLS
+
+        #WORLD GENERATION
+        playerX = base.render.find("player").getX()
+        playerY = base.render.find("player").getY()
+        playerZ = base.render.find("player").getZ()
+        if math.fabs(playerX) >= self.chunkNum * 1000:
+            self.load_chunk()
+        if math.fabs(playerY) >= self.chunkNum * 1000:
+            self.load_chunk()
+        if math.fabs(playerZ) >= self.chunkNum * 1000:
+            self.load_chunk()
         return task.cont
+
+    def load_chunk(self):
+        testPyramid = Pyramid(100, 6)
+        testPyramid.setR(180)
+        testPyramid.setPos(base.render.find("player").getPos())
+        testPyramid.reparentTo(base.render)
+        self.chunkNum += 1
