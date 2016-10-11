@@ -68,8 +68,25 @@ class createMovement():
         return task.cont
 
     def load_chunk(self):
-        testPyramid = Pyramid(100, 6)
-        testPyramid.setR(180)
-        testPyramid.setPos(base.render.find("player").getPos())
-        testPyramid.reparentTo(base.render)
+        #I need to figure out panda's noise 
+        seedStr = str(self.worldSeed)
+        seedArray = []
+        islandArray = [[100, 6, 0, 0, 0]]
+        for x in seedStr:
+            seedArray.append(int(x))
+        numIslands = seedArray[0]*seedArray[8]
+        print("number of islands " + str(numIslands))
+        for x in range(numIslands):
+            size = (seedArray[6])*(numIslands/(x+1))
+            sides = x + 1 * seedArray[1]
+            xPos = (seedArray[7] - seedArray[4]) + ((x)*x)
+            yPos = (seedArray[1] - seedArray[8]) + ((x)*x)
+            zPos = (seedArray[0] - seedArray[3]) + ((x)*x)
+            islandArray.append([size, sides, xPos, yPos, zPos])
+        for x in range(len(islandArray)):
+            #tempPyramid = Pyramid(islandArray[x][0], islandArray[x][1])
+            #tempPyramid.setR(180)
+            #tempPyramid.setPos(islandArray[x][2], islandArray[x][3], islandArray[x][4])
+            #tempPyramid.reparentTo(base.render)
+            #print(islandArray[x][0])
         self.chunkNum += 1
